@@ -4,7 +4,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "docker:mysql": "docker run --name todo-mysql -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=todo -p 3306:3306 -d mysql:8",
+    "docker:start": "docker start todo-mysql",
+    "docker:stop": "docker stop todo-mysql",
+    "prisma:generate": "prisma generate",
+    "prisma:push": "prisma db push",
+    "prisma:setup": "prisma generate && prisma db push",
+    "start:all": "npm run docker:start && npm run prisma:push",
+    "start:fresh": "npm run docker:mysql && npm run prisma:setup && npm run dev"
   },
   "keywords": [],
   "author": "",
