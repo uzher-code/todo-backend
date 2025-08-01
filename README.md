@@ -15,12 +15,15 @@ env files contains the database url. Since I am using docker and running the db 
 ### Install packages
 ```npm install```
 
-### Start docker db and server - first time
-Recommended for first time. This should also start the server
-```npm run start:fresh```
+### Start docker db
+Creates the db if it does not exist - Docker required.
+```npm run docker:mysql```
 
-### Start existing docker db
-```npm run docker:start```
+### Stop docker container
+```npm run docker:stop```
+
+### Sync prisma schema with db
+```npm run prisma:setup```
 
 ### Start server
 ```npm run dev```
